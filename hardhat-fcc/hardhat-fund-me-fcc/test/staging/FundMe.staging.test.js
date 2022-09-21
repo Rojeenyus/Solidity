@@ -16,10 +16,10 @@ developmentChain.includes(network.name)
         fundMe = await ethers.getContract("FundMe", deployer);
       });
 
-      isCallTrace("allows people to fund and withdraw", async function () {
+      it("allows people to fund and withdraw", async function () {
         await fundMe.fund({ value: sendValue });
         await fundMe.widthraw();
         const endingBalance = await fundMe.provider.getBalance(fundMe.address);
-        assert.equel(endingBalance.toString(), "0");
+        assert.equal(endingBalance.toString(), "0");
       });
     });
